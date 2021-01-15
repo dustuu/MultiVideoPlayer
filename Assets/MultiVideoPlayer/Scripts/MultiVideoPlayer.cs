@@ -88,6 +88,30 @@ namespace Dustuu.VRChat.MultiVideoPlayerSystem
             return GetBaseVRCVideoPlayer().IsReady;
         }
 
+        public bool IsPlaying()
+        {
+            // Init Check
+            if (!initComplete)
+            {
+                Debug.LogError("Attempted to call IsPlaying() on MultiVideoPlayer that had not completed its Init()");
+                return false;
+            }
+
+            return GetBaseVRCVideoPlayer().IsPlaying;
+        }
+
+        public void SetTime(float time)
+        {
+            // Init Check
+            if (!initComplete)
+            {
+                Debug.LogError("Attempted to call SetTime() on MultiVideoPlayer that had not completed its Init()");
+                return;
+            }
+
+            GetBaseVRCVideoPlayer().SetTime(time);
+        }
+
         public string GetURLString() { return url.Get(); }
         private BaseVRCVideoPlayer GetBaseVRCVideoPlayer() { return baseVRCVideoPlayer; }
     }

@@ -15,11 +15,13 @@ namespace Dustuu.VRChat.MultiVideoPlayerSystem
         // A higher delay is less likely to trigger a rate limiting error from YouTube, 10 seconds is recommended to be safe
         [SerializeField]
         private double timeDelayBetweenLoadRequests = 10;
+        [SerializeField]
+        private bool waitForAll = false;
         // Whether or not the MultiVideoPlayerManager will automatically start playing all the videos once they are all ready
         [SerializeField]
         private bool autoPlay = false;
         // Variables
-        private bool autoPlayStarted = false;
+        private bool autoPlayCompleted = false;
         private double timeScriptStart;
         private MultiVideoPlayer[] multiVideoPlayers;
 
@@ -51,10 +53,25 @@ namespace Dustuu.VRChat.MultiVideoPlayerSystem
             }
 
             // If autoPlay is enabled, play the videos as soon as they are ready
-            if (autoPlay && !autoPlayStarted && IsReady())
+            if (autoPlay && !autoPlayCompleted)
             {
-                PlayAll();
-                autoPlayStarted = true;
+                if (waitForAll)
+                {
+                    if (AllReady())
+                    {
+                        PlayAll();
+                        autoPlayCompleted = true;
+                    }
+                }
+                else
+                {
+                    float timeSinceStart = (float)(timeCurrent - timeScriptStart);
+                    PlayAllAtTime(timeSinceStart);
+                    if (AllReady())
+                    {
+                        autoPlayCompleted = true;
+                    }
+                }
             }
         }
 
@@ -64,14 +81,30 @@ namespace Dustuu.VRChat.MultiVideoPlayerSystem
             // Init Check
             if (!initComplete) { return; }
 
-            if (IsReady()) { foreach (MultiVideoPlayer multiVideoPlayer in multiVideoPlayers) { multiVideoPlayer.Play(); } }
-            else { Debug.LogError("Couldn't play videos until all children are finished loading."); }
+            if (waitForAll && !AllReady())
+            {
+                Debug.LogError("When 'Wait For All' is enabled, PlayAll() must be called after all videos finish loading!");
+                return;
+            }
+            PlayAllAtTime(0);
+        }
+
+        private void PlayAllAtTime(float time)
+        {
+            foreach (MultiVideoPlayer multiVideoPlayer in multiVideoPlayers)
+            {
+                if (!multiVideoPlayer.IsPlaying() && multiVideoPlayer.IsReady())
+                {
+                    multiVideoPlayer.SetTime(time);
+                    multiVideoPlayer.Play();
+                }
+            }
         }
 
         // The time at which the final video load request will be made (the final video may not finish loading until shortly after this time)
         private double GetFinalLoadTime() { return timeScriptStart + (timeDelayBetweenLoadRequests * (multiVideoPlayers.Length - 1)); }
 
-        public bool IsReady()
+        public bool AllReady()
         {
             // Init Check
             if (!initComplete) { return false; }

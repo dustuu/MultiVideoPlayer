@@ -21,7 +21,7 @@ namespace Dustuu.VRChat.MultiVideoPlayerSystem.Examples
             if (multiVideoPlayerManager == null)
             { Debug.LogError("Error: ExampleMultiVideoPlayerButton is missing a reference to a MultiVideoPlayerManager."); }
             else
-            { playButton.interactable = multiVideoPlayerManager.IsReady(); }
+            { playButton.interactable = multiVideoPlayerManager.AllReady(); }
         }
     }
 }
