@@ -5,8 +5,9 @@ A VRChat UdonSharp tool to play multiple videos at the same time.
 - Allows multiple videos to be played at the same time safely without causing YouTube rate limiting errors
 
 ## Installation
-1. Install the latest VRCSDK and latest release of [UdonSharp](https://github.com/MerlinVR/UdonSharp/releases/latest)
-2. Install the [latest](https://github.com/dustuu/MultiVideoPlayer/releases) release
+1. Install the latest [VRCSDK](https://docs.vrchat.com/docs/setting-up-the-sdk) version
+2. Install the latest release of [UdonSharp](https://github.com/MerlinVR/UdonSharp/releases/latest)
+3. Install the latest release of [MultiVideoPlayer](https://github.com/dustuu/MultiVideoPlayer/releases)
 
 ## Configuration
 1. Drag the MultiVideoPlayerManager prefab into your scene
