@@ -13,7 +13,7 @@ A VRChat UdonSharp tool to play multiple videos at the same time.
 2. Drag a MultiVideoPlayer prefab in to your scene as a child of the MultiVideoPlayerManager  object for each video you want to play.
 3. Set the URL to your desired video on each MultiVideoPlayer component. Make sure you set the URL field of the MultiVideoPlayer component, not the VRCAVProVideoPlayer component.
 4. If you want the videos to auto-play as soon as they are ready, set the "Auto Play" field to true on the MultiVideoPlayerManager component.
-5. If you want the videdos to play after a button is hit, configure a button to call the "PlayAll" function on the MultiVideoPlayerManager component via SendCustomEvent. You can find a pre-configured example of this at "Assets/MultiVideoPlayer/Examples/Prefabs/ExampleMultiVideoPlayerSystem.prefab".
+5. If you want the videos to play after a button is hit, configure a button to call the "PlayAll" function on the MultiVideoPlayerManager component via SendCustomEvent. You can find a pre-configured example of this at "Assets/MultiVideoPlayer/Examples/Prefabs/ExampleMultiVideoPlayerSystem.prefab".
 
 ## Notes
 - All VRCAVProVideoPlayer components in the scene must have AutoPlay set to False
