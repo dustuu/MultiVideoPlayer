@@ -112,37 +112,13 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &336285628
+--- !u!1001 &884790915
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1694574533905035986, guid: cc205d86db4a08e4eb6c5d3ad67bfa1f,
-        type: 3}
-      propertyPath: serializedProgramAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: ba0829198828c6748a2dc22db589d753,
-        type: 2}
-    - target: {fileID: 2227694926248164233, guid: cc205d86db4a08e4eb6c5d3ad67bfa1f,
-        type: 3}
-      propertyPath: serializedProgramAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: ed9e5d6b6e66f374c9aa31949e638f66,
-        type: 2}
-    - target: {fileID: 2270168192309450438, guid: cc205d86db4a08e4eb6c5d3ad67bfa1f,
-        type: 3}
-      propertyPath: serializedProgramAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: ba0829198828c6748a2dc22db589d753,
-        type: 2}
-    - target: {fileID: 2691755546153407888, guid: cc205d86db4a08e4eb6c5d3ad67bfa1f,
-        type: 3}
-      propertyPath: serializedProgramAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 4ec4987a9cd378446a9a8339607c7dad,
-        type: 2}
     - target: {fileID: 2691755546153407888, guid: cc205d86db4a08e4eb6c5d3ad67bfa1f,
         type: 3}
       propertyPath: serializedPublicVariablesBytesString
@@ -166,7 +142,7 @@ PrefabInstance:
     - target: {fileID: 4215559725968368826, guid: cc205d86db4a08e4eb6c5d3ad67bfa1f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4215559725968368826, guid: cc205d86db4a08e4eb6c5d3ad67bfa1f,
         type: 3}
@@ -191,7 +167,7 @@ PrefabInstance:
     - target: {fileID: 4215559725968368826, guid: cc205d86db4a08e4eb6c5d3ad67bfa1f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4215559725968368826, guid: cc205d86db4a08e4eb6c5d3ad67bfa1f,
         type: 3}
@@ -414,7 +390,7 @@ Transform:
   - {fileID: 1070855828}
   - {fileID: 1003713468}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1070855826
 GameObject:

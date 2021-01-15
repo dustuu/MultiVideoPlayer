@@ -66,7 +66,7 @@ namespace Dustuu.VRChat.MultiVideoPlayerSystem
                 else
                 {
                     float timeSinceStart = (float)(timeCurrent - timeScriptStart);
-                    PlayAllAtTime(timeSinceStart);
+                    PlayAllAtTime(timeSinceStart, false);
                     if (AllReady())
                     {
                         autoPlayCompleted = true;
@@ -86,14 +86,20 @@ namespace Dustuu.VRChat.MultiVideoPlayerSystem
                 Debug.LogError("When 'Wait For All' is enabled, PlayAll() must be called after all videos finish loading!");
                 return;
             }
-            PlayAllAtTime(0);
+            PlayAllAtTime(0, true);
         }
 
-        private void PlayAllAtTime(float time)
+        private void PlayAllAtTime(float time, bool resetPlayingVideos)
         {
             foreach (MultiVideoPlayer multiVideoPlayer in multiVideoPlayers)
             {
-                if (!multiVideoPlayer.IsPlaying() && multiVideoPlayer.IsReady())
+                bool shouldPlay = true;
+                // If it's not ready, don't play it
+                if ( !multiVideoPlayer.IsReady()) { shouldPlay = false; }
+                // If we don't want to reset playing videos, and it is playing, don't play
+                if ( !resetPlayingVideos && multiVideoPlayer.IsPlaying()) { shouldPlay = false; }
+
+                if (shouldPlay)
                 {
                     multiVideoPlayer.SetTime(time);
                     multiVideoPlayer.Play();
@@ -117,5 +123,8 @@ namespace Dustuu.VRChat.MultiVideoPlayerSystem
             foreach (MultiVideoPlayer multiVideoPlayer in multiVideoPlayers) { if (!multiVideoPlayer.IsReady()) { return false; } }
             return true;
         }
+
+        public bool WaitForAllEnabled() { return waitForAll; }
+        public bool AutoPlayEnabled() { return autoPlay; }
     }
 }
